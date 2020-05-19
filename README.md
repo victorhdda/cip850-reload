@@ -1,5 +1,5 @@
 ---
-title: VPN
+title: CIP850-RELOAD
 date: 2020-05-18 23:20:00
 tags:
 - VOIP
@@ -9,11 +9,17 @@ tags:
 - SHELL
 ---
 
-Uma forma encontrada para contornar a indisponibilidade da central Intelbrás CIP850 foi criar um script que reinicia os canais sip da instância Asterisk periodicamente.
+
+Uma forma encontrada para contornar uma indisponibilidade, recorrente, da central Intelbrás CIP850, foi criar um script que reinicia os canais sip de sua instância Asterisk periodicamente.
+
+[CIP-850]
 
 Essa insdisponibilidade parece estar relacionada ao tempo de vida de uma conexão TCP (normalmente 120 segundos).
 
-Em uma central que não responde a um junto SIP, basta acessá-la via telnet, executar o comando abaixo e observar a reconexão dos juntores.
+#### Solução
+Em uma central que não responde a um juntor SIP, basta acessá-la via telnet, executar o comando abaixo e observar a reconexão dos juntores.
+
+
 
 ```sh
 asterisk -rx "isip reload
@@ -34,14 +40,11 @@ root:~> cat /var/spool/cron/crontabs/root
 */10 * * * * /usr/sbin/run_ntp > /dev/null 2>&1
 ```
 
-Em versões mais novas da central, v. 2.08.15 ou posteriores, uma solução parece ter sido foi implementada, conforme imagem da configuração de um juntor.
+Em versões mais novas da central, v. 2.08.15 ou posteriores, uma solução parece ter sido implementada. A imagem abaixo mostra opções para configurar o tempo de sessão TCP/SIP e o intervalo para envio de pacotes de updates.
 
 
-![Figura 1: Configuração de tempos de vida (keep alive) da conexão TCP/SIP a um juntor](/images/01.png)
+![Figura 1: Configuração de tempos de vida (keep alive) da conexão TCP/SIP a um juntor](/images/02.png)
 
-
-
-[CIP-850]
 
 #Dúvidas
 
