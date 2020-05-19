@@ -1,5 +1,11 @@
 #Author felipe.pereira_at_ifmg[dot]edu<one-more-dot>br
 
+Assim
+
+
+![Figura 1: Exemplo de comunicação de um celular para um web site através de uma VPN.](/images/01.png)
+
+
 
 É necessário reiniciar a central periodicamente para executar o comando: asterisk -rx "isip reload"
 
@@ -15,10 +21,72 @@ root:~>
 Como forma de programar a execução de forma automática, foi configurado o serviço cron
 
 
-pwd: 
+pwd:
 
 cron
 cat /var/spool/cron/crontabs/root
+
+----
+----
+sem o código
+root:~> cat /var/spool/cron/crontabs/root
+* * * * * /usr/sbin/sysinfo.sh
+#*/3 * * * * /usr/sbin/cip-reload.sh > /dev/null 2>&1
+*/10 * * * * /usr/sbin/run_ntp > /dev/null 2>&1
+
+
+com o código -errado
+-----------
+
+
+root:~> cat /var/spool/cron/crontabs/root
+* * * * * /usr/sbin/sysinfo.sh
+*/1 * * * * /usr/sbin/cip-reload.sh > /dev/null 2>&1
+*/10 * * * * /usr/sbin/run_ntp > /dev/null 2>&1
+
+
+-----------
+
+
+outro código
+
+
+root:~> cat /var/spool/cron/crontabs/root
+* * * * * /usr/sbin/sysinfo.sh
+*/1 * * * * asterisk -rx "isip reload" > /dev/null 2>&1
+*/10 * * * * /usr/sbin/run_ntp > /dev/null 2>&1
+root:~>
+
+-----
+
+
+
+
+
+
+
+
+
+o reboot e a execução do código tem que ser sincronizados ? será que a conexão TCP se perde com tempo maior que 2 min ?
+
+
+---tempo de desconexão:
+uptime >= 15 min
+
+
+
+root:~> uptime
+ 23:06:48 up 1 min, load average: 0.58, 0.34, 0.13
+
+
+0.09, 0.23, 0.11
+
+
+ 23:08:41 up 3 min, load average: 0.08, 0.23, 0.10
+
+
+
+
 
 Scripts:
 
@@ -39,6 +107,13 @@ root:~> cat test.sh
 #!/bin/msh                                                                      
 asterisk -rx "isip reload"                                                      
 exit
+
+
+Configuração Keep alive SIP
+
+
+
+
 
 
 
