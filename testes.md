@@ -11,7 +11,6 @@ root:~>
 
 
 
-
 root:~> uptime
  23:17:50 up 4 min, load average: 0.05, 0.20, 0.09
 root:~> cat /var/spool/cron/crontabs/root
