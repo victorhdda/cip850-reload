@@ -22,7 +22,7 @@ Em uma central que não responde a um juntor SIP, basta acessá-la via telnet, e
 
 
 ```sh
-asterisk -rx "isip reload
+asterisk -rx "isip reload"
 ```
 
 Como forma de programar a execução de forma automática, foi configurado o serviço cron, sem muito sucesso, para execução periódico desses scripts e  comando:
