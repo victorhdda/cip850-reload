@@ -41,6 +41,12 @@ Em versões mais novas da central, v. 2.08.15 ou posteriores, uma solução pare
 
 
 
+[CIP-850]
+
 #Dúvidas
 
 #o reboot e a execução do código tem que ser sincronizados ? será que a conexão TCP se perde com tempo maior que 2 min ?
+
+
+
+[CIP-850]: (/images/02.png)
