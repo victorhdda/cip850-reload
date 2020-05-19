@@ -9,8 +9,6 @@ tags:
 - SHELL
 ---
 
-
-
 Uma forma encontrada para contornar uma indisponibilidade, recorrente, da central Intelbrás [CIP-850], foi criar um script que reinicia os canais sip de sua instância Asterisk periodicamente.
 
 
