@@ -49,4 +49,4 @@ Em versões mais novas da central, v. 2.08.15 ou posteriores, uma solução pare
 
 
 
-[CIP-850]: (/images/02.png)
+[CIP-850]: /images/02.png
